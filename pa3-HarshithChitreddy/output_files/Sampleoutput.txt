@@ -1,0 +1,5 @@
+Example Output for input_files/sample1.pgm input_files/sample2.pgm:
+0.721985 99840042
+
+Example Output for input_files/sample1.pgm input_files/sample1.pgm:
+1.000000 0

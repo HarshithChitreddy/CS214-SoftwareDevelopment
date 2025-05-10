@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CS_214_Project_Tester" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-09-18T23:29:41" hostname="denver" time="0.168">
+  <properties/>
+  <testcase name="testIdenticalImages()" classname="CS_214_Project_Tester" time="0.105"/>
+  <testcase name="testSmallerImagesComparison()" classname="CS_214_Project_Tester" time="0.013"/>
+  <testcase name="testPixelCountMismatch()" classname="CS_214_Project_Tester" time="0.001"/>
+  <testcase name="testInvalidFileFormat()" classname="CS_214_Project_Tester" time="0.001"/>
+  <testcase name="testValidFileComparison()" classname="CS_214_Project_Tester" time="0.03"/>
+  <testcase name="testMismatchedDimensions()" classname="CS_214_Project_Tester" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

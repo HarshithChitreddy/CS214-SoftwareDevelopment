@@ -1,0 +1,12 @@
+
+2. USING 204_right AND 776_right :
+FINAL DOT PRODUCT = 0.597841
+
+4. USING 204_right AND 204_right :
+FINAL DOT PRODUCT = 0.661952
+
+5. USING singletonmatch1 AND singletonmatch2 :
+FINAL DOT PRODUCT = 1.000000
+
+9.USING 204_right AND error_negative_input :
+SHOULD THROW A CERR MESSAGE

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CS_214_Project_Tester" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-09-23T20:49:20" hostname="denver" time="1.084">
+  <properties/>
+  <testcase name="testPixelCountMismatch()" classname="CS_214_Project_Tester" time="0.624"/>
+  <testcase name="rightOutput()" classname="CS_214_Project_Tester" time="0.313"/>
+  <testcase name="testMissingHeader()" classname="CS_214_Project_Tester" time="0.021"/>
+  <testcase name="testMaxPixelValueExceeds255()" classname="CS_214_Project_Tester" time="0.04"/>
+  <testcase name="testNegativeHeight()" classname="CS_214_Project_Tester" time="0.032"/>
+  <testcase name="testNegativeWidth()" classname="CS_214_Project_Tester" time="0.034"/>
+  <testcase name="testFileNotFound()" classname="CS_214_Project_Tester" time="0.003"/>
+  <testcase name="testPixelSizeMismatch()" classname="CS_214_Project_Tester" time="0.01"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

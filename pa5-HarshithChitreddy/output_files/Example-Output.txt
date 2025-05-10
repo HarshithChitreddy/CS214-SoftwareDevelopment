@@ -1,0 +1,10 @@
+Command : gradle run -q --args="'input_files/correctfiles.txt' '1'"
+Ouput:
+    example1.pgm example2.pgm example3.pgm example4.pgm example5.pgm example6.pgm example7.pgm 
+
+Command : gradle run -q --args="'input_files/correctfiles.txt' '4'"
+Ouput:
+    example1.pgm example2.pgm 
+	example3.pgm 
+	example4.pgm example5.pgm 
+	example6.pgm example7.pgm 

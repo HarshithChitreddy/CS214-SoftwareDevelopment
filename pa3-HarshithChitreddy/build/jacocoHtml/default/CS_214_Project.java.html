@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CS_214_Project.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pa3-HarshithChitreddy</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">CS_214_Project.java</span></div><h1>CS_214_Project.java</h1><pre class="source lang-java linenums">import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+<span class="nc" id="L7">public class CS_214_Project {</span>
+    public static void main(String[] args) {
+<span class="nc bnc" id="L9" title="All 2 branches missed.">        if (args.length != 2) {</span>
+<span class="nc" id="L10">            System.err.println(&quot;Error: Provide exactly two input files.&quot;);</span>
+<span class="nc" id="L11">            return;</span>
+        }
+
+<span class="nc" id="L14">        String file1 = args[0];</span>
+<span class="nc" id="L15">        String file2 = args[1];</span>
+
+        try {
+<span class="nc" id="L18">            Image img1 = readPGMFile(file1);</span>
+<span class="nc" id="L19">            Image img2 = readPGMFile(file2);</span>
+
+<span class="nc bnc" id="L21" title="All 4 branches missed.">            if (img1.width != img2.width || img1.height != img2.height) {</span>
+<span class="nc" id="L22">                System.err.println(&quot;Error: Images have different dimensions.&quot;);</span>
+<span class="nc" id="L23">                return;</span>
+            }
+
+<span class="nc" id="L26">            double histogramComparisonValue = calculateHistogramComparison(img1, img2);</span>
+<span class="nc" id="L27">            double sumOfSquares = calculateSumOfSquares(img1, img2);</span>
+
+<span class="nc" id="L29">            System.out.printf(&quot;%.6f %.0f%n&quot;, histogramComparisonValue, sumOfSquares);</span>
+<span class="nc" id="L30">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L31">            System.err.println(&quot;Error: File not found.&quot;);</span>
+<span class="nc" id="L32">        } catch (Exception e) {</span>
+<span class="nc" id="L33">            System.err.println(&quot;Error: &quot; + e.getMessage());</span>
+<span class="nc" id="L34">        }</span>
+<span class="nc" id="L35">    }</span>
+
+    public static Image readPGMFile(String filename) throws Exception {
+<span class="fc" id="L38">        Scanner scanner = new Scanner(new File(filename));</span>
+<span class="fc" id="L39">        String magicNumber = scanner.next();</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if (!magicNumber.equals(&quot;P3&quot;)) {</span>
+<span class="nc" id="L41">            throw new IllegalArgumentException(&quot;Invalid file format.&quot;);</span>
+        }
+
+<span class="fc" id="L44">        int width = scanner.nextInt();</span>
+<span class="fc" id="L45">        int height = scanner.nextInt();</span>
+<span class="fc" id="L46">        int maxPixelValue = scanner.nextInt();</span>
+
+<span class="pc bpc" id="L48" title="3 of 6 branches missed.">        if (maxPixelValue != 255 || width &lt;= 0 || height &lt;= 0) {</span>
+<span class="nc" id="L49">            throw new IllegalArgumentException(&quot;Invalid image dimensions or pixel value.&quot;);</span>
+        }
+
+<span class="fc" id="L52">        List&lt;Integer&gt; pixels = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        while (scanner.hasNextInt()) {</span>
+<span class="fc" id="L54">            pixels.add(scanner.nextInt());</span>
+        }
+
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        if (pixels.size() != width * height) {</span>
+<span class="nc" id="L58">            throw new IllegalArgumentException(&quot;Pixel count mismatch.&quot;);</span>
+        }
+
+<span class="fc" id="L61">        return new Image(width, height, pixels);</span>
+    }
+
+    public static double calculateHistogramComparison(Image img1, Image img2) {
+<span class="fc" id="L65">        int[] hist1 = new int[64];</span>
+<span class="fc" id="L66">        int[] hist2 = new int[64];</span>
+
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        for (int pixel : img1.pixels) {</span>
+<span class="fc" id="L69">            int binIndex = pixel / 4;</span>
+<span class="fc" id="L70">            hist1[binIndex]++;</span>
+<span class="fc" id="L71">        }</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        for (int pixel : img2.pixels) {</span>
+<span class="fc" id="L73">            int binIndex = pixel / 4;</span>
+<span class="fc" id="L74">            hist2[binIndex]++;</span>
+<span class="fc" id="L75">        }</span>
+
+<span class="fc" id="L77">        double sumOfMin = 0;</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        for (int i = 0; i &lt; hist1.length; i++) {</span>
+<span class="fc" id="L79">            sumOfMin += Math.min(hist1[i], hist2[i]);</span>
+        }
+
+<span class="fc" id="L82">        int totalPixels = img1.width * img1.height;</span>
+<span class="fc" id="L83">        return sumOfMin / totalPixels;</span>
+    }
+
+    public static double calculateSumOfSquares(Image img1, Image img2) {
+<span class="fc" id="L87">        double sumOfSquares = 0;</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        for (int i = 0; i &lt; img1.pixels.size(); i++) {</span>
+<span class="fc" id="L89">            int diff = img1.pixels.get(i) - img2.pixels.get(i);</span>
+<span class="fc" id="L90">            sumOfSquares += diff * diff;</span>
+        }
+<span class="fc" id="L92">        return sumOfSquares;</span>
+    }
+
+    public static class Image {
+        int width, height;
+        List&lt;Integer&gt; pixels;
+
+<span class="fc" id="L99">        public Image(int width, int height, List&lt;Integer&gt; pixels) {</span>
+<span class="fc" id="L100">            this.width = width;</span>
+<span class="fc" id="L101">            this.height = height;</span>
+<span class="fc" id="L102">            this.pixels = pixels;</span>
+<span class="fc" id="L103">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

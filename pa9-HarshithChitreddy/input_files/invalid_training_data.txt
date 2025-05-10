@@ -1,0 +1,1 @@
+input_files/train/class1_image8.pgm

@@ -1,0 +1,2 @@
+input_files/example1.pgm
+input_files/example2.pgm

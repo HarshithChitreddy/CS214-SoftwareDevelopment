@@ -1,0 +1,4 @@
+Command : gradle run -q --args="input_files/twofiles.txt"
+Ouput:
+    example1.pgm example2.pgm 0.990784
+    example2.pgm example1.pgm 0.990784
